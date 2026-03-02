@@ -9,6 +9,10 @@ body{margin:0;font-family:sans-serif;background:#000;color:#fff;text-align:cente
 h1{font-size:3.5rem;margin:0;letter-spacing:3px}
 p{font-size:1.3rem;margin:20px 0}
 button{background:#fff;color:#000;border:none;padding:18px 40px;font-size:1.1rem;border-radius:50px;margin:10px;font-weight:bold}
+.products{padding:40px 20px;background:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px}
+.card{background:#222;border-radius:20px;overflow:hidden}
+.card img{width:100%;height:180px;object-fit:cover}
 </style>
 </head>
 <body>
@@ -18,6 +22,37 @@ button{background:#fff;color:#000;border:none;padding:18px 40px;font-size:1.1rem
     <h1>TAROT CLUB</h1>
     <p>Where performance meets destiny</p>
     <button onclick="alert('Welcome to your TAROT CLUB shop! ❤️')">SHOP NOW</button>
+  </div>
+</div>
+
+<div class="products">
+  <h2 style="font-size:2rem;margin-bottom:30px;color:#fff">Our Collection</h2>
+  <div class="grid">
+    
+    <div class="card">
+      <img src="https://picsum.photos/id/201/400/300" alt="Eclipse Tee">
+      <p style="padding:15px 10px;margin:0">Eclipse Performance Tee<br><b>₹2,499</b></p>
+      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/29/400/300" alt="Shadow Leggings">
+      <p style="padding:15px 10px;margin:0">Shadow Leggings<br><b>₹3,299</b></p>
+      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/160/400/300" alt="Destiny Hoodie">
+      <p style="padding:15px 10px;margin:0">Destiny Hoodie<br><b>₹4,499</b></p>
+      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://picsum.photos/id/201/400/300" alt="Aura Sneakers">
+      <p style="padding:15px 10px;margin:0">Aura Sneakers<br><b>₹5,999</b></p>
+      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+    </div>
+
   </div>
 </div>
 
