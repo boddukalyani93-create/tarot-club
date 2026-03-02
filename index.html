@@ -3,12 +3,16 @@
 <head>
 <title>TAROT CLUB</title>
 <style>
-body{margin:0;font-family:sans-serif;background:#000;color:#fff;text-align:center}
+body{margin:0;font-family:sans-serif;background:#000;color:#fff}
+.header{position:sticky;top:0;background:#000;border-bottom:1px solid #333;padding:15px;display:flex;justify-content:space-between;align-items:center;z-index:100}
+.logo{font-size:28px;font-weight:bold;letter-spacing:2px}
+.cart{position:relative;cursor:pointer}
+.cart-count{position:absolute;top:-8px;right:-8px;background:#fff;color:#000;font-size:12px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .hero{height:100vh;background:url('https://picsum.photos/id/1015/2000/1200')center/cover;display:flex;align-items:center;justify-content:center;position:relative}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(black,rgba(0,0,0,0.7))}
 h1{font-size:3.5rem;margin:0;letter-spacing:3px}
 p{font-size:1.3rem;margin:20px 0}
-button{background:#fff;color:#000;border:none;padding:18px 40px;font-size:1.1rem;border-radius:50px;margin:10px;font-weight:bold}
+button{background:#fff;color:#000;border:none;padding:15px 35px;font-size:1rem;border-radius:50px;margin:8px;font-weight:bold}
 .products{padding:40px 20px;background:#111}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px}
 .card{background:#222;border-radius:20px;overflow:hidden}
@@ -17,44 +21,74 @@ button{background:#fff;color:#000;border:none;padding:18px 40px;font-size:1.1rem
 </head>
 <body>
 
+<div class="header">
+  <div class="logo">TAROT CLUB</div>
+  <div class="cart" onclick="showCart()">
+    🛒 <span id="cartCount" class="cart-count">0</span>
+  </div>
+</div>
+
 <div class="hero">
-  <div>
+  <div style="text-align:center;position:relative;z-index:2">
     <h1>TAROT CLUB</h1>
     <p>Where performance meets destiny</p>
-    <button onclick="alert('Welcome to your TAROT CLUB shop! ❤️')">SHOP NOW</button>
+    <button onclick="alert('Welcome to your TAROT CLUB shop! ❤️')">SHOP COLLECTION</button>
   </div>
 </div>
 
 <div class="products">
-  <h2 style="font-size:2rem;margin-bottom:30px;color:#fff">Our Collection</h2>
+  <h2 style="font-size:2rem;margin-bottom:30px;text-align:center">Our Collection</h2>
   <div class="grid">
     
     <div class="card">
       <img src="https://picsum.photos/id/201/400/300" alt="Eclipse Tee">
       <p style="padding:15px 10px;margin:0">Eclipse Performance Tee<br><b>₹2,499</b></p>
-      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+      <button onclick="addToCart('Eclipse Performance Tee',2499)">Add to Cart</button>
     </div>
 
     <div class="card">
       <img src="https://picsum.photos/id/29/400/300" alt="Shadow Leggings">
       <p style="padding:15px 10px;margin:0">Shadow Leggings<br><b>₹3,299</b></p>
-      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+      <button onclick="addToCart('Shadow Leggings',3299)">Add to Cart</button>
     </div>
 
     <div class="card">
       <img src="https://picsum.photos/id/160/400/300" alt="Destiny Hoodie">
       <p style="padding:15px 10px;margin:0">Destiny Hoodie<br><b>₹4,499</b></p>
-      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+      <button onclick="addToCart('Destiny Hoodie',4499)">Add to Cart</button>
     </div>
 
     <div class="card">
       <img src="https://picsum.photos/id/201/400/300" alt="Aura Sneakers">
       <p style="padding:15px 10px;margin:0">Aura Sneakers<br><b>₹5,999</b></p>
-      <button onclick="alert('Added to Cart! 🛒')">Add to Cart</button>
+      <button onclick="addToCart('Aura Sneakers',5999)">Add to Cart</button>
     </div>
 
   </div>
 </div>
+
+<script>
+let cart = [];
+function addToCart(name, price) {
+  cart.push({name, price});
+  document.getElementById('cartCount').innerText = cart.length;
+  alert(name + ' added to cart! 🛒');
+}
+function showCart() {
+  if(cart.length === 0) {
+    alert('Your cart is empty');
+    return;
+  }
+  let msg = 'Your Cart:\n';
+  let total = 0;
+  cart.forEach(item => {
+    msg += item.name + ' - ₹' + item.price + '\n';
+    total += item.price;
+  });
+  msg += '\nTotal: ₹' + total;
+  alert(msg);
+}
+</script>
 
 </body>
 </html>
