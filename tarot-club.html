@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAROT CLUB — Premium Athletic Wear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF7F2;--warm:#FFFEF9;--gold:#C8922A;--gold-l:#E8B84B;--gold-p:#FDF3DC;--dark:#1C1C1E;--dark2:#2D2D30;--gray:#6B6B6B;--lg:#E8E4DC;--border:#DDD8CE;--sh:rgba(28,28,30,.08);--shd:rgba(28,28,30,.18)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--warm);color:var(--dark);overflow-x:hidden;cursor:none}
+.cur{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .3s,height .3s}
+.cur-r{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s ease,width .3s,height .3s;opacity:.6}
+.cur.h{width:20px;height:20px;background:var(--gold-l)}
+.cur-r.h{width:58px;height:58px;opacity:.25}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px;transition:background .4s,box-shadow .4s}
+nav.s{background:rgba(255,254,249,.95);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.12em;color:var(--dark);text-decoration:none}
+.logo b{color:var(--gold)}
+.nav-l{display:flex;gap:36px;list-style:none}
+.nav-l a{text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);position:relative;transition:color .2s}
+.nav-l a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.nav-l a:hover{color:var(--gold)}
+.nav-l a:hover::after{transform:scaleX(1)}
+.nav-r{display:flex;align-items:center;gap:18px}
+.ni{background:none;border:none;cursor:none;color:var(--dark);padding:6px;position:relative;transition:color .2s}
+.ni:hover{color:var(--gold)}
+.cc{position:absolute;top:0;right:0;width:16px;height:16px;background:var(--gold);color:white;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.nbtn{background:var(--dark);color:white;border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:background .2s,transform .2s}
+.nbtn:hover{background:var(--gold);transform:translateY(-1px)}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px}
+.hbg span{display:block;width:24px;height:2px;background:var(--dark);transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hl{display:flex;flex-direction:column;justify-content:center;padding:130px 6% 80px 8%;position:relative;z-index:2}
+.htag{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:0;animation:fu .8s .2s ease forwards}
+.htag::before{content:'';width:28px;height:1.5px;background:var(--gold)}
+.hh{font-family:'Playfair Display',serif;font-size:clamp(52px,6vw,88px);font-weight:900;line-height:1;letter-spacing:-.02em;color:var(--dark);margin-bottom:28px;opacity:0;animation:fu .9s .35s ease forwards}
+.hh em{font-style:italic;color:var(--gold);display:block}
+.hs{font-size:16px;font-weight:300;line-height:1.7;color:var(--gray);max-width:400px;margin-bottom:44px;opacity:0;animation:fu .9s .5s ease forwards}
+.ha{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:fu .9s .65s ease forwards}
+.btp{background:var(--dark);color:white;padding:16px 36px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:none;text-decoration:none;display:inline-block;transition:background .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.btp::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.btp:hover::before{transform:translateX(0)}
+.btp span{position:relative;z-index:1}
+.btp:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--shd)}
+.bto{background:transparent;color:var(--dark);padding:15px 32px;border:1.5px solid var(--dark);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:all .25s}
+.bto:hover{background:var(--dark);color:white;transform:translateY(-2px)}
+.hstats{display:flex;gap:36px;margin-top:60px;opacity:0;animation:fu .9s .8s ease forwards}
+.si{border-left:2px solid var(--gold);padding-left:14px}
+.sn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--dark);line-height:1}
+.sl{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:4px}
+.hr{position:relative;overflow:hidden;opacity:0;animation:fi 1.2s .3s ease forwards}
+.hbdg{position:absolute;bottom:48px;left:-28px;background:white;padding:20px 24px;box-shadow:0 20px 60px var(--shd);display:flex;align-items:center;gap:14px;animation:flt 4s ease-in-out infinite}
+.hbi{width:44px;height:44px;background:var(--gold-p);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.hbt p:first-child{font-size:13px;font-weight:600;color:var(--dark)}
+.hbt p:last-child{font-size:11px;color:var(--gray);margin-top:2px}
+.hscr{position:absolute;bottom:32px;left:6%;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fi 1s 1.2s ease forwards}
+.scrl{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gold));animation:sp 2s ease-in-out infinite}
+.scrt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+
+/* MARQUEE */
+.mq{background:var(--dark);padding:17px 0;overflow:hidden;border-top:2px solid var(--gold)}
+.mt{display:flex;animation:mq 25s linear infinite;width:max-content}
+.mi{display:flex;align-items:center;gap:32px;padding:0 40px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);white-space:nowrap}
+.mi span{color:var(--gold);font-size:16px}
+
+/* SECTION HEAD */
+.sh{text-align:center;margin-bottom:64px}
+.stag{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.stag::before,.stag::after{content:'';width:20px;height:1.5px;background:var(--gold)}
+.st{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,54px);font-weight:700;line-height:1.15;color:var(--dark)}
+.st em{font-style:italic;color:var(--gold)}
+.ss{font-size:15px;font-weight:300;color:var(--gray);max-width:480px;margin:16px auto 0;line-height:1.7}
+
+/* CATEGORIES */
+.cats{padding:100px 5%;background:var(--warm)}
+.cg{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:320px 320px;gap:16px}
+.cc{position:relative;overflow:hidden;cursor:none;display:flex;align-items:flex-end}
+.cc:first-child{grid-row:1/3}
+.cbg{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.cc:hover .cbg{transform:scale(1.05)}
+.cin{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,30,.75) 0%,rgba(28,28,30,0) 55%);display:flex;align-items:flex-end;padding:28px;transition:background .4s}
+.cc:hover .cin{background:linear-gradient(to top,rgba(28,28,30,.88) 0%,rgba(28,28,30,.1) 60%)}
+.cl{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:white;line-height:1.1;margin-bottom:12px}
+.cc:first-child .cn{font-size:42px}
+.ck{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:4px}
+.clink{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:white;text-decoration:none;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.cc:hover .clink{opacity:1;transform:translateY(0)}
+
+/* PRODUCTS */
+.ps{padding:100px 5%;background:var(--cream)}
+.tabs{display:flex;justify-content:center;gap:4px;margin-bottom:56px;background:var(--lg);padding:4px;width:fit-content;margin-left:auto;margin-right:auto}
+.tb{padding:10px 28px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;cursor:none;color:var(--gray);transition:all .25s}
+.tb.a{background:var(--dark);color:white}
+.tb:hover:not(.a){color:var(--dark)}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pc{background:white;cursor:none;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.pc:hover{transform:translateY(-6px);box-shadow:0 24px 64px var(--shd)}
+.piw{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--lg);display:flex;align-items:center;justify-content:center;font-size:80px}
+.pc:hover .piw>:first-child{transform:scale(1.06)}
+.pb{position:absolute;top:14px;left:14px;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 10px}
+.bn{background:var(--dark);color:white}
+.bs{background:#D4472A;color:white}
+.bh{background:var(--gold);color:white}
+.pw{position:absolute;top:14px;right:14px;width:36px;height:36px;background:white;border:none;cursor:none;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s;box-shadow:0 2px 12px var(--sh);color:var(--gray)}
+.pc:hover .pw{opacity:1;transform:scale(1)}
+.pw:hover{transform:scale(1.1)!important}
+.pq{position:absolute;bottom:0;left:0;right:0;background:var(--dark);color:white;border:none;padding:14px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:none;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.pq:hover{background:var(--gold)}
+.pc:hover .pq{transform:translateY(0)}
+.pinfo{padding:18px 18px 20px}
+.pcols{display:flex;gap:6px;margin-bottom:10px}
+.cd{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(0,0,0,.12)}
+.pn{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;line-height:1.3}
+.pcat{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.ppr{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.pp{font-size:17px;font-weight:700;color:var(--dark)}
+.po{font-size:13px;color:var(--gray);text-decoration:line-through}
+.prat{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--gold);font-weight:600}
+.pf{text-align:center;margin-top:56px}
+
+/* FEATURES */
+.fs{background:var(--gold-p);border-top:1px solid rgba(200,146,42,.2);border-bottom:1px solid rgba(200,146,42,.2);padding:0 5%;display:grid;grid-template-columns:repeat(4,1fr)}
+.fi{padding:36px 24px;display:flex;align-items:center;gap:18px;border-right:1px solid rgba(200,146,42,.2)}
+.fi:last-child{border-right:none}
+.fic{width:48px;height:48px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 4px 16px rgba(200,146,42,.15)}
+.fit strong{display:block;font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.fit span{font-size:12px;color:var(--gray);line-height:1.4}
+
+/* EDITORIAL */
+.ed{padding:100px 5%;background:var(--warm)}
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:620px}
+.em{position:relative;overflow:hidden;background:var(--dark);display:flex;align-items:center;justify-content:center}
+.emb{position:absolute;top:40px;right:-12px;background:var(--gold);padding:10px 20px 10px 24px;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:white}
+.ec{background:var(--dark);padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+.etag{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.etag::before{content:'';width:24px;height:1.5px;background:var(--gold)}
+.et{font-family:'Playfair Display',serif;font-size:clamp(32px,3.5vw,52px);font-weight:700;line-height:1.1;color:white;margin-bottom:24px}
+.et em{font-style:italic;color:var(--gold-l)}
+.eb{font-size:15px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.5);margin-bottom:44px}
+.ests{display:flex;gap:40px;margin-bottom:44px}
+.es{border-left:2px solid var(--gold);padding-left:16px}
+.esv{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:white;line-height:1}
+.esl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+/* TESTIMONIALS */
+.ts{padding:100px 5%;background:var(--cream)}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tc{background:white;padding:36px 32px;border:1px solid var(--border);position:relative;transition:transform .3s,box-shadow .3s}
+.tc:hover{transform:translateY(-4px);box-shadow:0 16px 48px var(--sh)}
+.tq{font-size:52px;line-height:.8;font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:20px;display:block}
+.tst{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:16px}
+.tt{font-size:15px;line-height:1.75;color:var(--gray);font-weight:300;margin-bottom:28px;font-style:italic}
+.ta{display:flex;align-items:center;gap:14px}
+.tav{width:44px;height:44px;border-radius:50%;background:var(--lg);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--gold);font-family:'Playfair Display',serif}
+.tn{font-size:14px;font-weight:600;color:var(--dark)}
+.tr{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.ttg{position:absolute;top:28px;right:28px;background:var(--gold-p);color:var(--gold);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px}
+
+/* NEWSLETTER */
+.nl{padding:100px 5%;background:var(--dark);position:relative;overflow:hidden}
+.nl::before{content:'TC';position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:min(30vw,380px);line-height:1;color:rgba(255,255,255,.03);pointer-events:none;letter-spacing:-.05em}
+.nli{max-width:640px;margin:0 auto;text-align:center;position:relative}
+.nltag{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.nltag::before,.nltag::after{content:'';width:20px;height:1.5px;background:var(--gold)}
+.nlt{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,56px);font-weight:700;color:white;margin-bottom:16px;line-height:1.1}
+.nlt em{color:var(--gold-l);font-style:italic}
+.nlsub{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:44px}
+.nlf{display:flex;gap:0;border:1px solid rgba(255,255,255,.12);overflow:hidden;max-width:520px;margin:0 auto}
+.nli2{flex:1;padding:18px 22px;background:rgba(255,255,255,.06);border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:14px;color:white}
+.nli2::placeholder{color:rgba(255,255,255,.3)}
+.nli2:focus{background:rgba(255,255,255,.1)}
+.nlb{background:var(--gold);color:white;border:none;padding:18px 32px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:none;transition:background .2s;white-space:nowrap}
+.nlb:hover{background:var(--gold-l)}
+.nlbs{display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap}
+.nb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.35)}
+.nb span{color:var(--gold)}
+
+/* FOOTER */
+footer{background:#111110;padding:80px 5% 40px;border-top:2px solid rgba(200,146,42,.2)}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.flogo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.12em;color:white;margin-bottom:18px;display:block;text-decoration:none}
+.flogo b{color:var(--gold)}
+.fd{font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;max-width:280px;margin-bottom:28px}
+.fsoc{display:flex;gap:12px}
+.sb{width:38px;height:38px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;font-size:14px;transition:all .2s;cursor:none}
+.sb:hover{border-color:var(--gold);color:var(--gold)}
+.fct{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:white;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.fl{list-style:none}
+.fl li{margin-bottom:12px}
+.fl a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.4);transition:color .2s;cursor:none}
+.fl a:hover{color:var(--gold)}
+.fbot{padding-top:32px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.fcp{font-size:12px;color:rgba(255,255,255,.2)}
+.fpy{display:flex;gap:10px;align-items:center}
+.fp{padding:4px 10px;border:1px solid rgba(255,255,255,.1);font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.3);text-transform:uppercase}
+
+/* CART */
+.ov{position:fixed;inset:0;background:rgba(28,28,30,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.ov.o{opacity:1;pointer-events:all}
+.cd2{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:white;z-index:201;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(28,28,30,.2)}
+.cd2.o{transform:translateX(0)}
+.ch{padding:28px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cttl{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--dark)}
+.ccl{background:none;border:none;cursor:none;font-size:22px;color:var(--gray);line-height:1;padding:4px;transition:color .2s,transform .2s}
+.ccl:hover{color:var(--dark);transform:rotate(90deg)}
+.cb{flex:1;overflow-y:auto;padding:20px 28px}
+.ci{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cimg{width:80px;height:96px;background:var(--lg);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:36px}
+.cin2{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.cvar{font-size:12px;color:var(--gray);margin-bottom:8px}
+.cprice{font-size:16px;font-weight:700;color:var(--dark)}
+.cqty{display:flex;align-items:center;border:1px solid var(--border);width:fit-content;margin-top:8px}
+.qb{background:none;border:none;cursor:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--dark);transition:background .15s}
+.qb:hover{background:var(--lg)}
+.qv{width:32px;text-align:center;font-size:13px;font-weight:600}
+.crm{background:none;border:none;cursor:none;color:var(--gray);font-size:12px;transition:color .2s;margin-left:auto;align-self:flex-start}
+.crm:hover{color:#D4472A}
+.cf{padding:20px 28px 32px;border-top:1px solid var(--border);background:var(--cream)}
+.csub{display:flex;justify-content:space-between;font-size:13px;color:var(--gray);margin-bottom:8px}
+.ctot{display:flex;justify-content:space-between;font-size:18px;font-weight:700;color:var(--dark);padding:12px 0;border-top:1px solid var(--border);margin-bottom:20px}
+.cck{display:block;width:100%;background:var(--dark);color:white;padding:17px;border:none;cursor:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background .25s}
+.cck:hover{background:var(--gold)}
+
+/* TOAST */
+.toast{position:fixed;bottom:32px;right:32px;z-index:300;background:var(--dark);color:white;padding:16px 24px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;box-shadow:0 12px 40px var(--shd);transform:translateY(120%);opacity:0;transition:transform .4s cubic-bezier(.4,0,.2,1),opacity .4s}
+.toast.on{transform:translateY(0);opacity:1}
+.ti{color:var(--gold);font-size:18px}
+
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.rv.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.pg{grid-template-columns:repeat(3,1fr)}.cg{grid-template-columns:1fr 1fr;grid-template-rows:auto}.cc:first-child{grid-row:auto}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hr{height:50vh}.hl{padding:120px 5% 60px}.eg{grid-template-columns:1fr}.ftop{grid-template-columns:1fr 1fr;gap:40px}.tg{grid-template-columns:1fr;max-width:520px;margin:0 auto}.fs{grid-template-columns:1fr 1fr}.nav-l{display:none}.hbg{display:flex}body{cursor:auto}.cur,.cur-r{display:none}}
+@media(max-width:640px){.pg{grid-template-columns:repeat(2,1fr);gap:12px}.cg{grid-template-columns:1fr}.hstats{gap:20px}.ha{flex-direction:column;align-items:flex-start}.fs{grid-template-columns:1fr}.fi{border-right:none;border-bottom:1px solid rgba(200,146,42,.2)}.ftop{grid-template-columns:1fr;gap:32px}.nlf{flex-direction:column}.ec{padding:48px 32px}.nlbs{flex-direction:column;align-items:center;gap:12px}}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<div class="ov" id="ov" onclick="toggleCart()"></div>
+<div class="cd2" id="cd2">
+  <div class="ch">
+    <div class="cttl">Your Bag</div>
+    <button class="ccl" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cb" id="cb"></div>
+  <div class="cf" id="cf" style="display:none">
+    <div class="csub"><span>Subtotal</span><span id="csub">₹0</span></div>
+    <div class="csub"><span>Shipping</span><span>Free over ₹3,999</span></div>
+    <div class="ctot"><span>Total</span><span id="ctot">₹0</span></div>
+    <a href="#" class="cck">Checkout →</a>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span class="ti">✦</span><span id="tmsg">Added to bag</span></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">TAROT<b>.</b>CLUB</a>
+  <ul class="nav-l">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#editorial">Journal</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="ni" onclick="showToast('🔍 Search coming soon')" aria-label="Search">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="ni" onclick="showToast('♥ Wishlist coming soon')" aria-label="Wishlist">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <button class="ni" onclick="toggleCart()" style="position:relative" aria-label="Cart">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cc" id="cc" style="display:none">0</span>
+    </button>
+    <button class="nbtn">Login</button>
+    <button class="hbg" id="hbg" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hl">
+    <div class="htag">Summer Collection 2026</div>
+    <h1 class="hh">Born to<em>Move.</em>Built to<em>Last.</em></h1>
+    <p class="hs">Premium athletic wear engineered at the crossroads of performance, craft, and style. Worn by athletes who refuse to compromise.</p>
+    <div class="ha">
+      <a href="#products" class="btp"><span>Shop Collection</span></a>
+      <a href="#collections" class="bto">Explore Lookbook</a>
+    </div>
+    <div class="hstats">
+      <div class="si"><div class="sn">180+</div><div class="sl">Countries</div></div>
+      <div class="si"><div class="sn">2M+</div><div class="sl">Athletes</div></div>
+      <div class="si"><div class="sn">12Y</div><div class="sl">Of Craft</div></div>
+    </div>
+  </div>
+  <div class="hr">
+    <div style="width:100%;height:100%;min-height:60vh;background:linear-gradient(160deg,#F0EAE0 0%,#D4C8B8 40%,#B8A890 100%);display:flex;align-items:center;justify-content:center;font-size:clamp(80px,12vw,160px);font-family:'Bebas Neue',sans-serif;color:rgba(200,146,42,0.13);letter-spacing:-.05em;user-select:none;flex-direction:column;line-height:0.9">TAROT<br>CLUB</div>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(250,247,242,0.2) 0%,transparent 60%)"></div>
+    <div class="hbdg">
+      <div class="hbi">✦</div>
+      <div class="hbt"><p>New Arrivals</p><p>Summer 2026 — 34 pieces</p></div>
+    </div>
+  </div>
+  <div class="hscr"><span class="scrt">Scroll</span><div class="scrl"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mt">
+    <div class="mi">Premium Athletic Wear <span>✦</span></div>
+    <div class="mi">Free Shipping Over ₹3,999 <span>✦</span></div>
+    <div class="mi">New Summer 2026 <span>✦</span></div>
+    <div class="mi">Worldwide Delivery <span>✦</span></div>
+    <div class="mi">Crafted for Champions <span>✦</span></div>
+    <div class="mi">Tarot Club <span>✦</span></div>
+    <div class="mi">Premium Athletic Wear <span>✦</span></div>
+    <div class="mi">Free Shipping Over ₹3,999 <span>✦</span></div>
+    <div class="mi">New Summer 2026 <span>✦</span></div>
+    <div class="mi">Worldwide Delivery <span>✦</span></div>
+    <div class="mi">Crafted for Champions <span>✦</span></div>
+    <div class="mi">Tarot Club <span>✦</span></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="cats rv" id="collections">
+  <div class="sh rv">
+    <div class="stag">Shop by Category</div>
+    <h2 class="st">Find Your <em>Edge</em></h2>
+    <p class="ss">Every discipline demands its own gear. We've engineered it all.</p>
+  </div>
+  <div class="cg">
+    <div class="cc rv"><div class="cbg" style="background:linear-gradient(160deg,#2D2D30,#111)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;opacity:.05;font-family:'Bebas Neue';color:white;user-select:none">RUN</div><div class="cin"><div><div class="cl">Performance</div><div class="cn">Men's Training</div><div class="ck">48 pieces</div><a href="#products" class="clink">Shop Now →</a></div></div></div>
+    <div class="cc rv d1"><div class="cbg" style="background:linear-gradient(160deg,#1B3A2D,#0F2419)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.06;font-family:'Bebas Neue';color:white;user-select:none">STUDIO</div><div class="cin"><div><div class="cl">Studio</div><div class="cn">Women's Studio</div><div class="ck">62 pieces</div><a href="#products" class="clink">Shop Now →</a></div></div></div>
+    <div class="cc rv d2"><div class="cbg" style="background:linear-gradient(160deg,#3A2010,#200E04)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.06;font-family:'Bebas Neue';color:white;user-select:none">COURT</div><div class="cin"><div><div class="cl">Court</div><div class="cn">Court Series</div><div class="ck">29 pieces</div><a href="#products" class="clink">Shop Now →</a></div></div></div>
+    <div class="cc rv d3"><div class="cbg" style="background:linear-gradient(160deg,#1A2A3A,#0D1520)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.06;font-family:'Bebas Neue';color:white;user-select:none">RUN</div><div class="cin"><div><div class="cl">Running</div><div class="cn">Run Series</div><div class="ck">37 pieces</div><a href="#products" class="clink">Shop Now →</a></div></div></div>
+    <div class="cc rv d4"><div class="cbg" style="background:linear-gradient(160deg,#3A3020,#201A0A)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.06;font-family:'Bebas Neue';color:white;user-select:none">ACC</div><div class="cin"><div><div class="cl">Accessories</div><div class="cn">Accessories</div><div class="ck">55 pieces</div><a href="#products" class="clink">Shop Now →</a></div></div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="ps" id="products">
+  <div class="sh rv">
+    <div class="stag">Our Collection</div>
+    <h2 class="st">Engineered for <em>Excellence</em></h2>
+    <p class="ss">Every piece is tested, refined, and tested again. No compromises.</p>
+  </div>
+  <div class="tabs rv">
+    <button class="tb a" onclick="fp('all',this)">All</button>
+    <button class="tb" onclick="fp('men',this)">Men</button>
+    <button class="tb" onclick="fp('women',this)">Women</button>
+    <button class="tb" onclick="fp('new',this)">New</button>
+    <button class="tb" onclick="fp('sale',this)">Sale</button>
+  </div>
+  <div class="pg" id="pg"></div>
+  <div class="pf rv"><a href="#" class="btp"><span>View All 200+ Products</span></a></div>
+</section>
+
+<!-- FEATURES -->
+<div class="fs">
+  <div class="fi rv"><div class="fic">🚀</div><div class="fit"><strong>Free Express Shipping</strong><span>On orders above ₹3,999</span></div></div>
+  <div class="fi rv d1"><div class="fic">↩</div><div class="fit"><strong>30-Day Returns</strong><span>No questions, no hassle</span></div></div>
+  <div class="fi rv d2"><div class="fic">🛡</div><div class="fit"><strong>2-Year Warranty</strong><span>Every product guaranteed</span></div></div>
+  <div class="fi rv d3"><div class="fic">💬</div><div class="fit"><strong>24/7 Expert Support</strong><span>Always here for you</span></div></div>
+</div>
+
+<!-- EDITORIAL -->
+<section class="ed" id="editorial">
+  <div class="eg">
+    <div class="em rv" style="min-height:400px">
+      <div style="font-size:clamp(60px,10vw,120px);font-family:'Bebas Neue',sans-serif;color:rgba(200,146,42,0.1);letter-spacing:-.05em;line-height:.9;text-align:center;padding:40px;user-select:none">TAROT<br>CLUB<br>SS26</div>
+      <div class="emb">SS 2026</div>
+      <div style="position:absolute;bottom:40px;left:40px;width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;cursor:none" onclick="showToast('▶ Film coming soon')">
+        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+    </div>
+    <div class="ec rv d2">
+      <div class="etag">The Philosophy</div>
+      <h2 class="et">Crafted for<br>the <em>Pursuit.</em></h2>
+      <p class="eb">Every Tarot Club piece begins with obsession. Obsession over material, movement, and the precise way a seam interacts with a body in motion. We believe athletic wear should be both instrument and expression — a technical tool that carries the quiet confidence of exceptional craft.</p>
+      <div class="ests">
+        <div class="es"><div class="esv">70%</div><div class="esl">Sustainable Materials</div></div>
+        <div class="es"><div class="esv">Zero</div><div class="esl">Carbon by 2027</div></div>
+      </div>
+      <a href="#" class="bto" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)" onmouseenter="this.style.color='#1C1C1E'" onmouseleave="this.style.color='rgba(255,255,255,.7)'">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="ts" id="about">
+  <div class="sh rv">
+    <div class="stag">Athlete Reviews</div>
+    <h2 class="st">Worn by the <em>Best</em></h2>
+    <p class="ss">From Olympians to everyday warriors. Here's what they say.</p>
+  </div>
+  <div class="tg">
+    <div class="tc rv"><div class="ttg">Verified</div><span class="tq">"</span><div class="tst">★★★★★</div><p class="tt">The fit is unlike anything I've worn. It moves with you like a second skin and still looks sharp off the track. This is the future of athletic wear.</p><div class="ta"><div class="tav">A</div><div><div class="tn">Arjun Mehta</div><div class="tr">Marathon Runner · Mumbai</div></div></div></div>
+    <div class="tc rv d1"><div class="ttg">Top Reviewer</div><span class="tq">"</span><div class="tst">★★★★★</div><p class="tt">I've tried every premium brand out there. Tarot Club's training set outlasted them all. The quality speaks for itself after month six of daily use.</p><div class="ta"><div class="tav">P</div><div><div class="tn">Priya Nair</div><div class="tr">CrossFit Athlete · Bangalore</div></div></div></div>
+    <div class="tc rv d2"><div class="ttg">Elite Member</div><span class="tq">"</span><div class="tst">★★★★★</div><p class="tt">From morning runs to evening sessions, everything holds up beautifully. The attention to detail in every stitch is genuinely extraordinary.</p><div class="ta"><div class="tav">R</div><div><div class="tn">Rohan Singh</div><div class="tr">Triathlete · Delhi</div></div></div></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl">
+  <div class="nli">
+    <div class="nltag rv">Join the Club</div>
+    <h2 class="nlt rv">Get <em>Exclusive</em><br>Access First</h2>
+    <p class="nlsub rv">Member pricing, early drops, and the stories behind the craft. No spam, ever.</p>
+    <form class="nlf rv" onsubmit="subscribe(event)">
+      <input type="email" class="nli2" id="ne" placeholder="Your email address" required>
+      <button type="submit" class="nlb">Subscribe ✦</button>
+    </form>
+    <div class="nlbs rv">
+      <div class="nb"><span>✓</span>Early access to drops</div>
+      <div class="nb"><span>✓</span>Member-only discounts</div>
+      <div class="nb"><span>✓</span>Free first month shipping</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div>
+      <a href="#" class="flogo">TAROT<b>.</b>CLUB</a>
+      <p class="fd">Premium athletic wear engineered for the modern athlete. Global. Minimal. Uncompromising in craft and performance.</p>
+      <div class="fsoc">
+        <a href="#" class="sb" aria-label="Instagram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="sb" aria-label="Twitter"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" class="sb" aria-label="YouTube"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+    </div>
+    <div><div class="fct">Shop</div><ul class="fl"><li><a href="#">Men's Collection</a></li><li><a href="#">Women's Collection</a></li><li><a href="#">New Arrivals</a></li><li><a href="#">Best Sellers</a></li><li><a href="#">Sale</a></li><li><a href="#">Accessories</a></li></ul></div>
+    <div><div class="fct">Support</div><ul class="fl"><li><a href="#">Size Guide</a></li><li><a href="#">Shipping & Returns</a></li><li><a href="#">FAQ</a></li><li><a href="#">Track Order</a></li><li><a href="#">Care Instructions</a></li><li><a href="#">Contact Us</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fl"><li><a href="#">About Us</a></li><li><a href="#">Sustainability</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Journal</a></li><li><a href="#">Affiliates</a></li></ul></div>
+  </div>
+  <div class="fbot">
+    <div class="fcp">© 2026 Tarot Club. All rights reserved. Made with precision.</div>
+    <div class="fpy"><span class="fp">Visa</span><span class="fp">Mastercard</span><span class="fp">UPI</span><span class="fp">Razorpay</span><span class="fp">PayTM</span></div>
+  </div>
+</footer>
+
+<script>
+const PRODS=[
+  {id:1,name:"Eclipse Performance Tee",cat:"Training",g:"men",price:2499,old:3499,badge:"sale",cols:["#1C1C1E","#E8E4DC","#2D4A2D"],emoji:"👕",r:4.9,rv:284},
+  {id:2,name:"Shadow Compression Leggings",cat:"Studio",g:"women",price:3299,old:null,badge:"new",cols:["#1C1C1E","#4A5568","#9B2335"],emoji:"👖",r:4.8,rv:196},
+  {id:3,name:"Destiny Performance Hoodie",cat:"Training",g:"men",price:4499,old:null,badge:"hot",cols:["#2D2D30","#C4A97C","#1B3A2D"],emoji:"🧥",r:4.9,rv:412},
+  {id:4,name:"Aura Minimalist Sneakers",cat:"Court",g:"men",price:5999,old:7499,badge:"sale",cols:["#F5F0E8","#1C1C1E","#C8922A"],emoji:"👟",r:4.7,rv:337},
+  {id:5,name:"Flux Training Shorts",cat:"Training",g:"men",price:1899,old:null,badge:"new",cols:["#1C1C1E","#2D4A2D","#1B3A6E"],emoji:"🩳",r:4.8,rv:158},
+  {id:6,name:"Aurora Sports Bra",cat:"Studio",g:"women",price:2199,old:null,badge:"new",cols:["#9B2335","#1B3A2D","#C8922A"],emoji:"👙",r:4.9,rv:223},
+  {id:7,name:"Apex Running Jacket",cat:"Running",g:"men",price:6499,old:7999,badge:"sale",cols:["#1C1C1E","#1B3A6E","#F5F0E8"],emoji:"🧥",r:4.8,rv:89},
+  {id:8,name:"Zen Recovery Set",cat:"Recovery",g:"women",price:7999,old:null,badge:"hot",cols:["#E8E4DC","#C4A97C","#2D2D30"],emoji:"🩴",r:5.0,rv:67},
+];
+
+let cart=[];
+
+function fmt(n){return n.toLocaleString('en-IN')}
+
+function renderProds(f='all'){
+  const g=document.getElementById('pg');
+  const list=f==='all'?PRODS:f==='new'?PRODS.filter(p=>p.badge==='new'):f==='sale'?PRODS.filter(p=>p.badge==='sale'):PRODS.filter(p=>p.g===f);
+  g.innerHTML=list.map(p=>`
+    <div class="pc">
+      <div class="piw">
+        <div style="width:100%;height:100%;background:linear-gradient(160deg,#EDE8E0,#C8C0B0);display:flex;align-items:center;justify-content:center;font-size:80px;transition:transform .6s">${p.emoji}</div>
+        ${p.badge?`<span class="pb b${p.badge}">${p.badge==='new'?'New':p.badge==='sale'?'Sale':'🔥 Hot'}</span>`:''}
+        <button class="pw" id="w${p.id}" onclick="tw(event,${p.id})"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        <button class="pq" onclick="atc(${p.id})">Add to Bag ✦</button>
+      </div>
+      <div class="pinfo">
+        <div class="pcols">${p.cols.map(c=>`<div class="cd" style="background:${c}"></div>`).join('')}</div>
+        <div class="pn">${p.name}</div>
+        <div class="pcat">${p.cat}</div>
+        <div class="ppr"><div><span class="pp">₹${fmt(p.price)}</span>${p.old?`<span class="po" style="margin-left:6px">₹${fmt(p.old)}</span>`:''}</div><div class="prat">★ ${p.r} <span style="color:var(--gray);font-weight:400;font-size:11px">(${p.rv})</span></div></div>
+      </div>
+    </div>`).join('');
+  setTimeout(()=>{g.querySelectorAll('.pc').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(20px)';setTimeout(()=>{el.style.transition='opacity .5s ease,transform .5s ease';el.style.opacity='1';el.style.transform='translateY(0)'},i*60)})},10);
+}
+
+function fp(f,btn){
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a');
+  renderProds(f);
+}
+
+function atc(id){
+  const p=PRODS.find(x=>x.id===id);
+  if(!p)return;
+  const ex=cart.find(i=>i.id===id);
+  if(ex)ex.qty++;else cart.push({...p,qty:1});
+  updCart();showToast(`${p.name} added to bag`);openCart();
+}
+
+function tw(e,id){
+  e.stopPropagation();
+  const b=document.getElementById('w'+id);
+  const on=b.classList.toggle('active');
+  b.innerHTML=on?`<svg width="16" height="16" fill="#D4472A" stroke="#D4472A" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`:`<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  showToast(on?'Added to wishlist ♥':'Removed from wishlist');
+}
+
+function updCart(){
+  const n=cart.reduce((s,i)=>s+i.qty,0);
+  const el=document.getElementById('cc');
+  el.textContent=n;el.style.display=n>0?'flex':'none';
+  const body=document.getElementById('cb');
+  const foot=document.getElementById('cf');
+  if(!cart.length){body.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;padding:60px 20px;text-align:center"><div style="font-size:52px">🛍</div><p style="font-family:'Playfair Display',serif;font-size:20px">Your bag is empty</p><p style="font-size:13px;color:var(--gray)">Add something extraordinary</p><button onclick="toggleCart()" class="bto" style="margin-top:8px">Continue Shopping</button></div>`;foot.style.display='none';return;}
+  body.innerHTML=cart.map(i=>`<div class="ci"><div class="cimg">${i.emoji}</div><div style="flex:1"><div class="cin2">${i.name}</div><div class="cvar">${i.cat} · Size M</div><div class="cprice">₹${fmt(i.price)}</div><div class="cqty"><button class="qb" onclick="cq(${i.id},-1)">−</button><span class="qv">${i.qty}</span><button class="qb" onclick="cq(${i.id},1)">+</button></div></div><button class="crm" onclick="rm(${i.id})">✕</button></div>`).join('');
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('csub').textContent=`₹${fmt(sub)}`;
+  document.getElementById('ctot').textContent=`₹${fmt(sub)}`;
+  foot.style.display='block';
+}
+
+function cq(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);updCart()}
+function rm(id){cart=cart.filter(x=>x.id!==id);updCart()}
+
+let cartOpen=false;
+function toggleCart(){cartOpen=!cartOpen;document.getElementById('cd2').classList.toggle('o',cartOpen);document.getElementById('ov').classList.toggle('o',cartOpen);document.body.style.overflow=cartOpen?'hidden':'';}
+function openCart(){if(!cartOpen){cartOpen=true;document.getElementById('cd2').classList.add('o');document.getElementById('ov').classList.add('o');document.body.style.overflow='hidden';clearTimeout(window._ct);window._ct=setTimeout(()=>{if(cartOpen)toggleCart();},3500);}}
+
+function showToast(msg){const t=document.getElementById('toast');document.getElementById('tmsg').textContent=msg;t.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('on'),3000);}
+
+function subscribe(e){e.preventDefault();const v=document.getElementById('ne').value;showToast('✦ Welcome to Tarot Club, '+v.split('@')[0]+'!');e.target.reset();}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',window.scrollY>40);
+  document.querySelectorAll('.rv:not(.v)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight*.88)el.classList.add('v');});
+});
+
+// Custom cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+if(cur&&curR){let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function a(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(a);})();document.querySelectorAll('a,button,.pc,.cc').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('h');curR.classList.add('h');});el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curR.classList.remove('h');});});}
+
+function toggleMobile(){const l=document.querySelector('.nav-l');if(!l)return;const vis=l.style.display==='flex';l.style.cssText=vis?'display:none':'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:var(--warm);padding:16px 5%;border-bottom:1px solid var(--border);z-index:99;gap:0';if(!vis)l.querySelectorAll('li').forEach(li=>{li.style.borderBottom='1px solid var(--border)';li.style.padding='14px 0';});}
+
+renderProds();updCart();
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('v');}),100);
+</script>
+</body>
+</html>
